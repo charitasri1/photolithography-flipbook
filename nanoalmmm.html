@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photolithography Flipbook</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+
+/* 🌿 NEW BACKGROUND (Dark Green Gradient) */
+background:radial-gradient(circle at top,#0b1f1a,#061412,#030a09);
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+color:#f5f5f5;
+}
+
+/* BOOK */
+.book{
+width:1000px;
+max-width:100%;
+}
+
+/* PAGE */
+.page{
+display:none;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(14px);
+border:1px solid rgba(212, 175, 55, 0.25);
+border-radius:18px;
+padding:40px;
+min-height:650px;
+box-shadow:0 0 35px rgba(0,0,0,0.4);
+}
+
+.active{
+display:block;
+}
+
+/* HEADINGS */
+h1{
+font-family:'Rajdhani',sans-serif;
+font-size:2.5rem;
+color:#d4af37;   /* gold */
+margin-bottom:15px;
+}
+
+h2{
+color:#c9a227;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#d8e2dc;
+}
+
+/* CARDS */
+.card{
+background:rgba(212,175,55,0.06);
+border:1px solid rgba(212,175,55,0.2);
+padding:20px;
+border-radius:14px;
+margin-top:20px;
+}
+
+/* GRID */
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-top:30px;
+}
+
+.flow{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:30px;
+}
+
+.step{
+background:rgba(212,175,55,0.08);
+border:1px solid rgba(212,175,55,0.25);
+padding:15px;
+border-radius:12px;
+text-align:center;
+font-weight:600;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:rgba(212,175,55,0.05);
+color:white;
+border:1px solid rgba(212,175,55,0.2);
+}
+
+/* BUTTON */
+.btn{
+background:linear-gradient(90deg,#d4af37,#f2d16b);
+color:black;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* RESULT */
+.result{
+margin-top:15px;
+font-size:1.3rem;
+color:#f2d16b;
+}
+
+/* NAV */
+.nav{
+text-align:center;
+margin-top:20px;
+}
+
+.nav button{
+padding:12px 20px;
+margin:0 5px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:rgba(212,175,55,0.15);
+color:white;
+border:1px solid rgba(212,175,55,0.3);
+}
+
+/* DRAG */
+#steps{
+margin-top:25px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.drag-item{
+background:rgba(212,175,55,0.08);
+border:1px solid rgba(212,175,55,0.25);
+padding:15px;
+border-radius:12px;
+cursor:grab;
+font-weight:600;
+}
+
+.drag-item.dragging{
+opacity:0.5;
+}
+
+</style>
+</head>
+<body>
+
+<div class="book">
+
+<!-- PAGE 1 -->
+<div class="page active">
+    <h1>Photolithography Process</h1>
+    <p class="subtitle">Nano Fabrication System</p>
+
+    <div class="card">
+        <img src="devices.png"
+             alt="Devices"
+             style="width:80%; max-width:750px; display:block; margin:auto; border-radius:12px;">
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <h1>Photolithography Stages</h1>
+    <p class="subtitle">Pattern Transfer Process in Semiconductor Manufacturing</p>
+
+    <div class="card" style="text-align:center;">
+        <img src="stages.png"
+             alt="Photolithography Stages"
+             style="width:75%; max-width:700px; border-radius:12px;">
+    </div>
+
+    <div class="card">
+        <h2>About the Process</h2>
+        <p>
+            Photolithography is a fundamental technique used in nano fabrication
+            and semiconductor manufacturing. It transfers geometric patterns from
+            a mask onto a silicon wafer using light-sensitive photoresist material.
+        </p>
+
+        <br>
+
+        <p>
+            The process includes coating, mask alignment, UV exposure,
+            development, and etching. These steps create precise microscopic
+            structures required for integrated circuits, sensors, processors,
+            and memory devices.
+        </p>
+
+        <br>
+
+        <p style="color:#f2d16b;font-weight:600;">
+            High precision, repeatability, and scalability make photolithography
+            one of the most important fabrication techniques in modern electronics.
+        </p>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+<h1>Stages</h1>
+
+<div class="hero">
+
+<div class="card">
+<h2>Cleaning</h2>
+<p>Removes contamination from wafer.</p>
+</div>
+
+<div class="card">
+<h2>Coating</h2>
+<p>Photoresist applied on wafer.</p>
+</div>
+
+<div class="card">
+<h2>Exposure</h2>
+<p>UV light transfers pattern.</p>
+</div>
+
+<div class="card">
+<h2>Etching</h2>
+<p>Removes unwanted material.</p>
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 4 (CALCULATOR FIXED BACK TO ORIGINAL STYLE) -->
+<div class="page">
+<h1>Exposure Time Calculator</h1>
+
+<!-- ✅ BACK TO ORIGINAL MEANING -->
+<p>Exposure Time = Exposure Dose ÷ UV Intensity</p>
+
+<input type="number" id="dose" placeholder="Exposure Dose">
+<input type="number" id="intensity" placeholder="UV Intensity">
+
+<button class="btn" onclick="calculate()">Calculate</button>
+
+<div id="result" class="result"></div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+<h1>Drag & Drop Challenge</h1>
+
+<div id="steps">
+
+<div class="drag-item" draggable="true">Etching</div>
+<div class="drag-item" draggable="true">Development</div>
+<div class="drag-item" draggable="true">Mask Alignment</div>
+<div class="drag-item" draggable="true">UV Exposure</div>
+<div class="drag-item" draggable="true">Photoresist Coating</div>
+<div class="drag-item" draggable="true">Wafer Cleaning</div>
+
+</div>
+
+<br>
+<button class="btn" onclick="checkOrder()">Check Answer</button>
+<div id="puzzleResult" class="result"></div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+<button onclick="prevPage()">◀ Prev</button>
+<button onclick="nextPage()">Next ▶</button>
+</div>
+
+</div>
+<script>
+
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
+
+function showPage(i){
+pages.forEach(p => p.classList.remove("active"));
+pages[i].classList.add("active");
+}
+
+function nextPage(){
+if(currentPage < pages.length - 1){
+currentPage++;
+showPage(currentPage);
+}
+}
+
+function prevPage(){
+if(currentPage > 0){
+currentPage--;
+showPage(currentPage);
+}
+}
+
+/* CALCULATION FIXED BACK */
+function calculate(){
+
+let dose = parseFloat(document.getElementById("dose").value);
+let intensity = parseFloat(document.getElementById("intensity").value);
+
+if(!dose || !intensity){
+document.getElementById("result").innerText = "Enter valid values";
+return;
+}
+
+let time = dose / intensity;
+document.getElementById("result").innerText =
+"Exposure Time: " + time.toFixed(2);
+}
+
+/* DRAG DROP */
+const list = document.getElementById("steps");
+let draggedItem = null;
+
+document.querySelectorAll(".drag-item").forEach(item => {
+
+item.addEventListener("dragstart", () => {
+draggedItem = item;
+setTimeout(() => item.style.display = "none", 0);
+});
+
+item.addEventListener("dragend", () => {
+setTimeout(() => item.style.display = "block", 0);
+draggedItem = null;
+});
+
+});
+
+list.addEventListener("dragover", (e) => {
+e.preventDefault();
+
+const afterElement = getDragAfterElement(list, e.clientY);
+
+if(afterElement == null){
+list.appendChild(draggedItem);
+}else{
+list.insertBefore(draggedItem, afterElement);
+}
+});
+
+function getDragAfterElement(container, y){
+const elements = [...container.querySelectorAll(".drag-item:not(.dragging)")];
+
+return elements.reduce((closest, child) => {
+const box = child.getBoundingClientRect();
+const offset = y - box.top - box.height / 2;
+
+if(offset < 0 && offset > closest.offset){
+return { offset: offset, element: child };
+}else{
+return closest;
+}
+}, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+/* CHECK ANSWER */
+function checkOrder(){
+
+const correct = [
+"Wafer Cleaning",
+"Photoresist Coating",
+"Mask Alignment",
+"UV Exposure",
+"Development",
+"Etching"
+];
+
+let items = document.querySelectorAll(".drag-item");
+let user = [];
+
+items.forEach(i => user.push(i.innerText));
+
+if(JSON.stringify(user) === JSON.stringify(correct)){
+document.getElementById("puzzleResult").innerText = "Correct Order!";
+}else{
+document.getElementById("puzzleResult").innerText = "Try Again!";
+}
+}
+
+</script>
+
+</body>
+</html>
